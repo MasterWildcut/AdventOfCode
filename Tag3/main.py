@@ -42,33 +42,18 @@ def secondTask():
     while(oxygenGeneratorRatingCount > 1):
         measureZero =numpy.char.startswith(measurements, oxygenString+'0', start=0)
         measureOne =numpy.char.startswith(measurements, oxygenString+'1', start=0)
-        print(0)
-        print(sum(measureZero))
-        print(1)
-        print(sum(measureOne))
         oxygenString += '0' if sum(measureZero)>sum(measureOne) else '1'
-        print(oxygenString)
         oxygenGeneratorRatingCount = sum(numpy.char.startswith(measurements, oxygenString, start=0))
     while(cOTwoGeneratorRatingCount > 1):
         measureZero =numpy.char.startswith(measurements, cOTwoString+'0', start=0)
         measureOne =numpy.char.startswith(measurements, cOTwoString+'1', start=0)
         cOTwoString += '1' if sum(measureZero)>sum(measureOne) else '0'
         cOTwoGeneratorRatingCount = sum(numpy.char.startswith(measurements, cOTwoString, start=0))
-        print(0)
-        print(sum(measureZero))
-        print(1)
-        print(sum(measureOne))
-        print(cOTwoString)
         
 
     oxygenGeneratorRating = measurements[numpy.argmax(numpy.char.startswith(measurements, oxygenString, start=0))]
     cotwoRating = measurements[numpy.argmax(numpy.char.startswith(measurements, cOTwoString, start=0))]
-    print(cOTwoString)
-    print(oxygenString)
-    print(oxygenGeneratorRating)
-    print(cotwoRating)
-    print(int(oxygenGeneratorRating,2))
-    print(int(cotwoRating,2))
+
     print(int(cotwoRating,2)*int(oxygenGeneratorRating,2))
 
 
