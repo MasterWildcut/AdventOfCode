@@ -1,4 +1,6 @@
 import numpy as np
+import scipy as sp
+from scipy import ndimage
 from collections import Counter
 
 def firstTask():
@@ -43,6 +45,18 @@ def firstTask():
     heatMap += 1
     print(sum(heatMap[sinkMap]))
 
+def secondTask():
+    heatMap = np.genfromtxt("input.txt", delimiter=1, dtype=int)
+    areas, _ = ndimage.label(heatMap < 9)
+    c = Counter(areas.flatten())
+
+    print(areas)
+    print(c)
+    print(c.most_common(4))
+    print(np.prod([value for key, value in c.most_common(4)[1:]])) # do not count the nines
+
+
+
 
 if __name__ == "__main__":
-    firstTask()
+    secondTask()
