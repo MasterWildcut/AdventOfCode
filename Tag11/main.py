@@ -7,17 +7,21 @@ from numpy.core.fromnumeric import shape
 def firstTask():
 
     octopoden = np.genfromtxt("input_test.txt", delimiter=1, dtype=int)
-    steps = 100
+    steps = 10000
     flashes = 0
     for s in range(steps):
         flashed = np.zeros(shape=shape(octopoden), dtype=bool)
         octopoden[octopoden > 9] = 0
+        if not octopoden.any():
+            print(octopoden)
+            print(s)
+            exit()
         octopoden += 1
         flashes, octopoden = flashing(octopoden, flashed, flashes)
-        print(flashes)
+        # print(flashes)
         octopoden[octopoden > 9] = 0
-        print(octopoden)
-    print(flashes)
+        # print(octopoden)
+    # print(flashes)
 
 
 def flashing(octopoden, flashed, flashes):
